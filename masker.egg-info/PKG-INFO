@@ -1,0 +1,121 @@
+Metadata-Version: 2.1
+Name: masker
+Version: 0.1.0
+Summary: A library for masking strings with custom characters.
+Home-page: https://github.com/kankburhan/masker
+Author: kankburhan
+Author-email: kankburhan@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Requires-Dist: unittest; extra == "dev"
+
+# Masker Library
+
+## Overview
+
+The Masker Library is a simple Python-based library designed to mask characters in a given word. It provides flexibility to mask characters from the start, end, or middle of the word while keeping a specified number of characters unmasked.
+
+## Features
+
+- **Mask characters from the start:** Mask all characters except for a specified number at the end.
+- **Mask characters from the end:** Mask all characters except for a specified number at the start.
+- **Mask characters from the middle:** Mask characters in the middle while keeping specified numbers of characters at both the start and the end.
+
+## Installation
+
+You can install the Masker library using pip:
+
+```sh
+pip install masker
+```
+
+## Usage
+
+### Import the Library
+
+```python
+from masker import Masker
+```
+
+### Initialize the Masker
+
+Create an instance of the `Masker` class with an optional mask character (default is '*').
+
+```python
+masker = Masker(mask_char='#')
+```
+
+### Masking Examples
+
+#### Mask from Start
+
+Mask all characters except the specified number of characters at the end.
+
+```python
+masked_word = masker.start("exampleword", keep_char=4)
+print(masked_word)  # Output: "######word"
+```
+
+#### Mask from End
+
+Mask all characters except the specified number of characters at the start.
+
+```python
+masked_word = masker.end("exampleword", keep_char=3)
+print(masked_word)  # Output: "exa########"
+```
+
+#### Mask from Middle
+
+Mask characters in the middle while keeping specified numbers of characters at both the start and the end.
+
+```python
+masked_word = masker.mid("exampleword", start_keep_char=2, end_keep_char=3)
+print(masked_word)  # Output: "ex#######ord"
+```
+
+## Methods
+
+### `start(word, keep_char=0)`
+
+Returns the word with the specified number of characters masked from the start.
+
+- **Parameters:**
+  - `word` (str): The input word to be masked.
+  - `keep_char` (int): Number of characters to keep unmasked from the start.
+- **Returns:** (str) The masked word.
+
+### `end(word, keep_char=0)`
+
+Returns the word with the specified number of characters masked from the end.
+
+- **Parameters:**
+  - `word` (str): The input word to be masked.
+  - `keep_char` (int): Number of characters to keep unmasked from the end.
+- **Returns:** (str) The masked word.
+
+### `mid(word, start_keep_char=0, end_keep_char=0)`
+
+Returns the word with the specified number of characters masked from the start and end.
+
+- **Parameters:**
+  - `word` (str): The input word to be masked.
+  - `start_keep_char` (int): Number of characters to keep unmasked from the start.
+  - `end_keep_char` (int): Number of characters to keep unmasked from the end.
+- **Returns:** (str) The masked word.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! Please submit a pull request or open an issue to discuss changes.
+
+---
+
+Happy masking!
